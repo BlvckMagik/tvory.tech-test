@@ -64,6 +64,7 @@ const EventCard: React.FC<
         direction="down"
       >
         <SpeedDialAction
+          id={`delete${id}`}
           icon={<DeleteIcon />}
           tooltipTitle={"Delete"}
           onClick={deleteEvent}
