@@ -35,39 +35,43 @@ const EventsList: React.FC<{
     return <Styled.CircularProgress size={80} />;
   }
 
-  return eventsList?.length ? (
+  return (
     <>
-      <Styled.Stack>
-        {eventsList
-          ?.sort((a: Event, b: Event) => a.startDate - b.startDate)
-          ?.map((event: Event) => (
-            <EventCard
-              key={event.id}
-              id={event.id}
-              createdAt={event.createdAt}
-              description={event.description}
-              startDate={event.startDate}
-              endDate={event.endDate}
-              type={event.type}
-              participants={[
-                { email: "defaultUser@gmail.com" },
-                ...event.participants,
-              ]}
-              status={event.status}
-              title={event.title}
-              setSnackbar={setSnackbar}
-              mutate={mutate}
-            />
-          ))}
-      </Styled.Stack>
+      {eventsList?.length ? (
+        <>
+          <Styled.Stack>
+            {eventsList
+              ?.sort((a: Event, b: Event) => a.startDate - b.startDate)
+              ?.map((event: Event) => (
+                <EventCard
+                  key={event.id}
+                  id={event.id}
+                  createdAt={event.createdAt}
+                  description={event.description}
+                  startDate={event.startDate}
+                  endDate={event.endDate}
+                  type={event.type}
+                  participants={[
+                    { email: "defaultUser@gmail.com" },
+                    ...event.participants,
+                  ]}
+                  status={event.status}
+                  title={event.title}
+                  setSnackbar={setSnackbar}
+                  mutate={mutate}
+                />
+              ))}
+          </Styled.Stack>
+        </>
+      ) : (
+        <Styled.NoEventsTitle>
+          Create the first event by clicking on the + in the corner
+        </Styled.NoEventsTitle>
+      )}
       <Styled.AddEvent href="/create">
         <AddIcon />
       </Styled.AddEvent>
     </>
-  ) : (
-    <Styled.NoEventsTitle>
-      Create the first event by clicking on the + in the corner
-    </Styled.NoEventsTitle>
   );
 };
 
