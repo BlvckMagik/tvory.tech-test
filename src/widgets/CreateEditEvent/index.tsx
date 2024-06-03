@@ -96,6 +96,7 @@ const CreateEditEvent: React.FC<{
           : [{ email: "", phone: "" }]
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, event]);
 
   return (
